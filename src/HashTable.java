@@ -4,9 +4,8 @@
  * with Key Value Pair and create LinkedList of MyMapNode
  */
 
-/*
- * import Map and import TreeMap
- */
+
+import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -64,11 +63,9 @@ public class HashTable {
         }
         int arrayIndex = getArrayIndex(key);
         HashNode head = Array[arrayIndex];
-
         /*
          * check existing node in hash table
          */
-
         while (head != null) {
             if (head.key.equals(key)) {
                 head.value = value;
@@ -102,6 +99,7 @@ public class HashTable {
     /*
      * Checking the values of the key
      */
+
     public String getKeyValue(Integer key) {
         int arrayIndex = getArrayIndex(key);
         HashNode head = Array[arrayIndex];
@@ -117,6 +115,7 @@ public class HashTable {
     /*
      * find frequency of words in a large paragraph phrase
      */
+
     public void freqOfWords(String str) {
         Map<String, Integer> map = new TreeMap<>();
         String arr[] = str.split(" ");
@@ -129,6 +128,17 @@ public class HashTable {
         }
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             System.out.println(entry.getKey() + "--->" + entry.getValue());
+        }
+    }
+
+    public void remWord(String str) {
+        Map<String, Integer> map = new TreeMap<>();
+
+        Iterator<String> word = map.keySet().iterator();
+        while (word.hasNext()) {
+            if (word.next().equals(str)) {
+                word.remove();
+            }
         }
     }
 
