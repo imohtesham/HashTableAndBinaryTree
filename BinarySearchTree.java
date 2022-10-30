@@ -1,3 +1,4 @@
+
 public class BinarySearchTree {
     /*
      * Represent a node of binary tree
@@ -9,7 +10,7 @@ public class BinarySearchTree {
 
         public Node(int x) {
             /*
-             *  Assign data to the new node, set left and right null
+             * Assign data to the new node, set left and right null
              */
             this.key = x;
             this.left = null;
@@ -18,7 +19,7 @@ public class BinarySearchTree {
     }
 
     /*
-     *  Represent the root of binary tree
+     * Represent the root of binary tree
      */
     public Node root;
 
@@ -27,7 +28,13 @@ public class BinarySearchTree {
     }
 
     /*
-     *  putData() will add new node to the binary search tree
+     * Counting Nodes by using left and right variables
+     */
+    int leftNodeCount = 0;
+    int rightNodeCount = 0;
+
+    /*
+     * putData() will add new node to the binary search tree
      */
     public void putData(int x) {
         Node node = new Node(x);
@@ -58,27 +65,36 @@ public class BinarySearchTree {
     }
 
     /*
-     *  display() will perform inorder traversal on binary search tree
+     * display() will perform inorder traversal on binary search tree
      */
     public void display(Node node) {
         if (root == null) {
             System.out.println("Linked Tree is Empty");
             return;
         } else {
-            if (node.left != null)
+            if (node.left != null) {
                 display(node.left);
-            System.out.println(node.key + " ");
-            if (node.right != null)
+                leftNodeCount++;
+                System.out.println(node.key + " ");
+            }
+            if (node.right != null) {
+                rightNodeCount++;
                 display(node.right);
+            }
 
         }
+    }
+
+    public void size() {
+        System.out.println("-------------------------------------------------------------------------");
+        System.out.println("Size of this Binary Search Tree : " + (leftNodeCount + rightNodeCount + 1));
     }
 
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree();
 
         /*
-         *  Add nodes to the binary tree
+         * Add nodes to the binary tree
          */
         tree.putData(56);
         tree.putData(30);
@@ -88,10 +104,14 @@ public class BinarySearchTree {
          * Displays the binary tree
          */
         tree.display(tree.root);
-
         System.out.println("Root Center -> node : " + tree.root.key);
         System.out.println("Root Left   -> node : " + tree.root.left.key);
         System.out.println("Root Right  -> node : " + tree.root.right.key);
+
+        /*
+         * Displays Size of the binary tree
+         */
+        tree.size();
 
     }
 }
